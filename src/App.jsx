@@ -54,7 +54,7 @@ const App = () => {
 
   // Just fill the content for number of boxes you want. e.g if you want 4 boxes fill up four boxes.
 
-  const febox1Title = "Web Development";
+  const febox1Title = "Website Development";
   const febox1Description =
     "I design and develop modern, high-performance websites tailored to business goals. From landing pages to complex platforms, I work with modern technologies to deliver scalable and responsive web solutions.";
 
@@ -211,8 +211,6 @@ const App = () => {
             box3Description={febox3Description}
           />
           <Seperator />
-          <Resume />
-          <Seperator />
           <Portfolio
             box1Img={pobox1Img}
             box1NumOfLikes={pobox1NumOfLikes}
@@ -239,6 +237,8 @@ const App = () => {
             box6Title={pobox6Title}
             box6Link={pobox6Link}
           />
+          <Seperator />
+          <Resume />
           <Seperator />
           <Testimonial testimonials={testimonials} />
           <Seperator />
