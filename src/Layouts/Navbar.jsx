@@ -60,7 +60,7 @@ const Navbar = (props) => {
   return (
     <div className="top-0 z-50 w-full bg-[#212428] navbar navbar-shadow flex justify-center items-center fixed">
       <div
-        className="flex items-center bg-[#212428] max-w-7xl w-full justify-between text-stone-100 h-24 max-[450px]:h-[86px]"
+        className="flex items-center bg-[#212428] max-w-7xl w-full justify-between text-stone-100 h-24 max-[450px]:h-[70px]"
         id="navbar"
       >
         <a href="/" className="nav-first-wrapper pl-3 flex items-center">
@@ -68,7 +68,7 @@ const Navbar = (props) => {
             src={profilePhoto}
             alt="profile-img"
             className="w-10"
-            style={{ minWidth: "70px" }}
+            style={{ minWidth: "45px" }}
           />
           {/* <h4 className="sm:text-lg text-md pl-2 uppercase tracking-wider font-normal font-primary">
             LAWAL
