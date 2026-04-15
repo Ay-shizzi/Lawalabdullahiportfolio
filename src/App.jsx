@@ -3,7 +3,7 @@ import "./assets/style.css";
 import "./assets/script";
 
 //Components
-import Navbar from "./Layouts/Navbar";
+import Navbar, { navbarInstance } from "./Layouts/Navbar";
 import Home from "./components/Home/Home";
 import Features from "./components/Features/Features";
 import Portfolio from "./components/Portfolio/Portfolio";
@@ -33,6 +33,12 @@ const App = () => {
 
   const hireMeClick = (childStateValue) => {
     setOnHireMeClick(childStateValue);
+  };
+
+  const openContactModal = () => {
+    if (navbarInstance.openModal) {
+      navbarInstance.openModal();
+    }
   };
 
   // className={`${!onHireMeClick ? "fixed " : null}`}
@@ -252,6 +258,7 @@ const App = () => {
             premiumTitle={prPremiumTitle}
             premiumPrice={prPremiumPrice}
             premiumDescription={prPremiumDescription}
+            openContactModal={openContactModal}
           />
           {/* <Seperator /> */}
           {/* <Blog

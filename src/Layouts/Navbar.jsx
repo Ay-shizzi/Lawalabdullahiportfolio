@@ -12,6 +12,9 @@ const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
+// Export function to open modal from outside
+export const navbarInstance = { openModal: null };
+
 const Navbar = (props) => {
   const [hireMeClick, setHireMeClick] = useState(false);
   const [hamBurgerClick, setHamBurgerClick] = useState(false);
@@ -22,6 +25,14 @@ const Navbar = (props) => {
     message: "",
   });
   const [status, setStatus] = useState("idle");
+
+  // Expose openModal to global instance
+  React.useEffect(() => {
+    navbarInstance.openModal = () => {
+      setHireMeClick(true);
+      setStatus("idle");
+    };
+  }, []);
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -55,6 +66,11 @@ const Navbar = (props) => {
       console.error("EmailJS error:", error);
       setStatus("error");
     }
+  };
+
+  const handleOpenModal = () => {
+    setHireMeClick(true);
+    setStatus("idle");
   };
 
   return (
@@ -101,13 +117,9 @@ const Navbar = (props) => {
           </ul>
         </div>
 
-        <div className="nav-third-wrapper xl:w-1/6 fl w-96 flex justify-around items-center">
+        <div className="nav-third-wrapper xl:w-1/6 fl w-48 flex justify-between items-center">
           <button
-            onClick={() => {
-              setHireMeClick(true);
-              setStatus("idle");
-              props.onHireMeClick(hireMeClick);
-            }}
+            onClick={handleOpenModal}
             className="red-text transition-all duration-500 sm:w-32 hover:mb-2 w-22 max-[450px]:w-[84px] max-[450px]:text-[8px] max-[450px]:px-0 max-[450px]:font-light max-[450px]:py-2 rounded-md text-[10px] py-3 px-2 sm:px-0 btn-shadow sm:font-medium font-primary sm:text-sm tracking-wider"
           >
             CONTACT ME
@@ -126,7 +138,6 @@ const Navbar = (props) => {
                 onClick={() => {
                   setHireMeClick(false);
                   setStatus("idle");
-                  props.onHireMeClick(hireMeClick);
                 }}
               >
                 <FaTimes className="red-text" />
@@ -238,19 +249,16 @@ const Navbar = (props) => {
             className={`${
               hamBurgerClick ? "opacity-100 " : "opacity-0 invisible"
             } fixed flex overflow-y-auto flex-col top-0 bottom-0 left-0 py-6 px-6 transition-all duration-500 ease-out mr-10`}
-            style={{ backgroundColor: "#191b1e", width: "370px" }}
+            style={{ backgroundColor: "#191b1e", width: "100%" }}
           >
             <div className="max-[350px]:w-5/6 w-full">
               <div className="flex justify-between items-center">
-                <a
-                  href="/"
-                  className="nav-first-wrapper pl-3 flex items-center"
-                >
+                <a href="/" className="nav-first-wrapper flex items-center">
                   <img
                     src={profilePhoto}
                     alt="profile-img"
                     className="w-10"
-                    style={{ minWidth: "70px" }}
+                    style={{ minWidth: "40px" }}
                   />
                   {/* <h4 className="sm:text-lg text-md pl-2 uppercase tracking-wider font-normal font-primary">
                     LAWAL
@@ -293,7 +301,7 @@ const Navbar = (props) => {
             </div>
 
             <div>
-              <h6 className="uppercase tracking-wider text-sm text-black pt-6">
+              <h6 className="uppercase tracking-wider text-sm text-white pt-6">
                 FIND ME WITH
               </h6>
               <div className="flex w-56 justify-evenly mt-7">

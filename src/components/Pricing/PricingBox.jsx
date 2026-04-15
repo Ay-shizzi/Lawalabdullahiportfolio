@@ -57,6 +57,7 @@ const PricingBox = (content) => {
     standardDescription,
     premiumTitle,
     premiumDescription,
+    openContactModal,
   } = content;
 
   const titles = {
@@ -108,7 +109,7 @@ const PricingBox = (content) => {
     <div className="lg:w-7/12 w-full lg:p-0 lg:mr-6">
       <div className="w-full h-full btn-shadow font-secondary flex flex-col rounded-xl">
         {/* Tab bar */}
-        <div className="relative flex max-[500px]:flex-col btn-shadow w-full justify-between items-center font-primary text-lg overflow-hidden rounded-t-xl">
+        <div className="relative flex btn-shadow w-full justify-between items-center font-primary overflow-hidden rounded-t-xl">
           {/* Sliding active indicator */}
           <div
             style={{
@@ -134,7 +135,7 @@ const PricingBox = (content) => {
                 backgroundColor:
                   activeTab === tab ? "rgba(253,71,102,0.04)" : "transparent",
               }}
-              className="px-3 flex-1 py-8 max-[500px]:w-full capitalize rounded-md"
+              className="px-1 sm:px-3 flex-1 py-4 sm:py-8 capitalize rounded-md text-xs sm:text-base lg:text-lg whitespace-nowrap"
             >
               {tab.charAt(0).toUpperCase() + tab.slice(1)}
             </button>
@@ -200,6 +201,7 @@ const PricingBox = (content) => {
               style={{
                 transition: "transform 0.18s ease, box-shadow 0.18s ease",
               }}
+              onClick={openContactModal}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px)";
                 e.currentTarget.style.boxShadow =

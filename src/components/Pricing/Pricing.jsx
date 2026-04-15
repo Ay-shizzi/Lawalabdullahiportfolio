@@ -22,6 +22,7 @@ const Pricing = (content) => {
     premiumTitle,
     premiumPrice,
     premiumDescription,
+    openContactModal,
   } = content;
 
   return (
@@ -51,6 +52,7 @@ const Pricing = (content) => {
         premiumTitle={premiumTitle}
         premiumPrice={premiumPrice}
         premiumDescription={premiumDescription}
+        openContactModal={openContactModal}
       />
     </div>
   );

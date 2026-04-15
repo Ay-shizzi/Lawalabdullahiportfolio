@@ -54,7 +54,7 @@ function Resume() {
       </div>
 
       {/* Tab bar with sliding indicator */}
-      <div className="relative flex sm:flex-row flex-col btn-shadow w-full justify-between items-center font-primary text-lg overflow-hidden rounded-xl">
+      <div className="relative flex btn-shadow w-full justify-between items-center font-primary overflow-hidden rounded-xl">
         <div
           style={{
             position: "absolute",
@@ -79,7 +79,7 @@ function Resume() {
               backgroundColor:
                 activeTab === tab ? "rgba(253,71,102,0.04)" : "transparent",
             }}
-            className="px-3 w-full flex-1 py-8 rounded-md"
+            className="px-1 sm:px-3 w-full flex-1 py-4 sm:py-8 rounded-md text-xs sm:text-base lg:text-lg whitespace-nowrap"
           >
             {TAB_LABELS[tab]}
           </button>
